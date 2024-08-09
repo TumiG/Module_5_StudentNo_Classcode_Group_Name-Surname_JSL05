@@ -11,24 +11,59 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
-    // Feel free to add even more songs
+    { title: "Time Moving Slow", artist: "Kanye West", genre: "Hip Hop" },
+    { title: "StarGazing", artist: "Travis Scott", genre: "Hip Hop" },
+    { title: "Sideways", artist: "Gordo", genre: "Hip Hop"}
+
+    
 ];
 
 
 // Object containing each Guardian's preferred genre
 const guardians = {
-    "Star-Lord": "Rock",
+    "Star-Lord": "Hip Hop",
     "Gamora": "Pop",
-    // Add preferences for Drax, Rocket, and Groot
+    "Drax": "R&B", 
+    "Rocket": "Pop",
+    "Groot": "Rap "
+    
 };
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
-    // Use the map() function to create playlists for each Guardian
-    // Your code here
+   const guardianNames = Object.keys(guardians);
+   
+   const playlists = guardianName.map(guardian => {
+    const genre = guardians[guardian];
+
+    const playlist = songs.filter(song => song.genre === genre); 
+
+    return {
+        guarduan: guardian,
+        playlist: playlist
+    }
+   });
 }
 
+const playlistsObject = playlists.reduce((acc, {guardian, playlist}) => {
+    acc[guardian] = playlist; 
+    return acc; 
+})
+
+return playlistsObjects; 
+
+
 // Call generatePlaylist and display the playlists for each Guardian
-generatePlaylist(guardians, songs);
+const playlists = generatePlaylist(guardians, songs);
+
+console.log("Playlists for each Guardian"); 
+for (const [guardian, playlist] of Object.entries(playlists)) {
+    console.log(`${guardian}'s Playlist`); 
+    if (playlist.length > 0) {
+        playlist.forEach(song => console.log(`- ${song.title}`)); 
+    } else {
+        console.log(" No songs available for this genre");
+    }
+}
 
 
